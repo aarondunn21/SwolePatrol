@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "KGEFA1dK2xmdNNI2DmcNLE7PPppzucGtyxFUmttVIs2MfP9L9G6gykpctQ27+sNC8+1OqcKCIFtk2A+yN76I1A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\austi\\source\\repos\\fsu-fall2022-capstone\\Project-Group10\\Swole Patrol\\Swole Patrol\\Swole Patrol.iOS\\Swole Patrol.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\austi\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\austi\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\austi\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+  ],
+  "logs": []
+}
