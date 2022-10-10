@@ -1,4 +1,5 @@
 ﻿using Swole_Patrol.Models;
+using Swole_Patrol.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,8 @@ namespace Swole_Patrol.ViewModels
 {
     public class NewItemViewModel : BaseViewModel
     {
+        ItemRepository repository = new ItemRepository();
+
         private string text;
         private string description;
 
@@ -56,7 +59,8 @@ namespace Swole_Patrol.ViewModels
                 Description = Description
             };
 
-            await DataStore.AddItemAsync(newItem);
+            //await DataStore.AddItemAsync(newItem);
+            var isSaved = await repository.Save(newItem);
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
