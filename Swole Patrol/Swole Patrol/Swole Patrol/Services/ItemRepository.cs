@@ -32,5 +32,11 @@ namespace Swole_Patrol.Services
                 Description = item.Object.Description
             }).ToList();
         }
+
+        public async Task<Item> GetItem(string itemId)
+        {
+            var allItems = await GetAll();
+            return allItems.Where(a => a.Id == itemId).FirstOrDefault();
+        }
     }
 }

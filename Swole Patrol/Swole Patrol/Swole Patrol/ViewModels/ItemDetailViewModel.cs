@@ -1,4 +1,5 @@
 ﻿using Swole_Patrol.Models;
+using Swole_Patrol.Services;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace Swole_Patrol.ViewModels
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public class ItemDetailViewModel : BaseViewModel
     {
+        ItemRepository repository = new ItemRepository();
+
         private string itemId;
         private string text;
         private string description;
@@ -43,7 +46,8 @@ namespace Swole_Patrol.ViewModels
         {
             try
             {
-                var item = await DataStore.GetItemAsync(itemId);
+                //var item = await DataStore.GetItemAsync(itemId);
+                var item = await repository.GetItem(itemId);
                 Id = item.Id;
                 Text = item.Text;
                 Description = item.Description;
