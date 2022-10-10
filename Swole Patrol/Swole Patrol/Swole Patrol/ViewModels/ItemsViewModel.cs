@@ -1,4 +1,5 @@
 ﻿using Swole_Patrol.Models;
+using Swole_Patrol.Services;
 using Swole_Patrol.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -10,6 +11,8 @@ namespace Swole_Patrol.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
+        ItemRepository repository = new ItemRepository();
+
         private Item _selectedItem;
 
         public ObservableCollection<Item> Items { get; }
@@ -35,7 +38,8 @@ namespace Swole_Patrol.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                //var items = await DataStore.GetItemsAsync(true);
+                var items = await repository.GetAll();
                 foreach (var item in items)
                 {
                     Items.Add(item);

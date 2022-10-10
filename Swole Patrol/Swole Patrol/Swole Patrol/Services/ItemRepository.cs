@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Swole_Patrol.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,16 @@ namespace Swole_Patrol.Services
                 return true;
             }
             return false;
+        }
+
+        public async Task<List<Item>> GetAll()
+        {
+            return (await firebaseClient.Child(nameof(Item)).OnceAsync<Item>()).Select(item => new Item
+            {
+                Id = item.Object.Id,
+                Text = item.Object.Text,
+                Description = item.Object.Description
+            }).ToList();
         }
     }
 }
