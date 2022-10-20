@@ -1,4 +1,5 @@
 ﻿using Firebase.Database;
+using Firebase.Database.Query;
 using Newtonsoft.Json;
 using Swole_Patrol.Models;
 using System;
@@ -37,6 +38,16 @@ namespace Swole_Patrol.Services
         {
             var allItems = await GetAll();
             return allItems.Where(a => a.Id == itemId).FirstOrDefault();
+        }
+
+        public async Task DeleteItem(string itemId)
+        {
+            {
+                var toDeleteItem = (await firebaseClient.Child("Item").OnceAsync<Item>())
+                    .Where(item => item.Object.Id == itemId).FirstOrDefault();
+                await firebaseClient.Child("Item").Child(toDeleteItem.Key).DeleteAsync();
+                return;
+            }
         }
     }
 }
