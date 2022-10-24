@@ -13,20 +13,62 @@ namespace Swole_Patrol.ViewModels
         ItemRepository repository = new ItemRepository();
 
         private string itemId;
-        private string text;
-        private string description;
+        private string username;
+        private string password;
+        private string name;
+        private DateTime birthday;
+        private string gender;
+        private int height;
+        private double weight;
+        private string email;
         public string Id { get; set; }
 
-        public string Text
+        public string Username
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => username;
+            set => SetProperty(ref username, value);
         }
 
-        public string Description
+        public string Password
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => password;
+            set => SetProperty(ref password, value);
+        }
+
+        public string Name
+        {
+            get => name;
+            set => SetProperty(ref name, value);
+        }
+
+        public DateTime Birthday
+        {
+            get => birthday;
+            set => SetProperty(ref birthday, value);
+        }
+        
+        public string Gender 
+        {
+            get => gender;
+            set => SetProperty(ref gender, value);
+        }
+
+        public int Height
+        {
+            get => height;
+            set => SetProperty(ref height, value);
+        }
+
+        public double Weight
+        {
+            get => weight;
+            set => SetProperty(ref weight, value);
+        }
+
+        public string Email
+        {
+            get => email;
+            set => SetProperty(ref email, value);
         }
 
         public string ItemId
@@ -49,8 +91,14 @@ namespace Swole_Patrol.ViewModels
                 //var item = await DataStore.GetItemAsync(itemId);
                 var item = await repository.GetItem(itemId);
                 Id = item.Id;
-                Text = item.Text;
-                Description = item.Description;
+                Username = item.Username;
+                Password = item.Password;
+                Name = item.Name;
+                Birthday = item.Birthday;
+                Gender = item.Gender;
+                Height = item.Height;
+                Weight = item.Weight;
+                Email = item.Email;
             }
             catch (Exception)
             {

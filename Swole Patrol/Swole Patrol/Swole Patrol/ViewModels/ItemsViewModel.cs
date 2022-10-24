@@ -89,7 +89,7 @@ namespace Swole_Patrol.ViewModels
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
-
+        
         async void OnItemDeleted(Item item)
         {
             await repository.DeleteItem(item.Id);

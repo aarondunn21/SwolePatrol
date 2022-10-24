@@ -29,8 +29,14 @@ namespace Swole_Patrol.Services
             return (await firebaseClient.Child(nameof(Item)).OnceAsync<Item>()).Select(item => new Item
             {
                 Id = item.Object.Id,
-                Text = item.Object.Text,
-                Description = item.Object.Description
+                Username = item.Object.Username,
+                Password = item.Object.Password,
+                Name = item.Object.Name,
+                Birthday = item.Object.Birthday,
+                Gender = item.Object.Gender,
+                Height = item.Object.Height,
+                Weight = item.Object.Weight,
+                Email = item.Object.Email
             }).ToList();
         }
 

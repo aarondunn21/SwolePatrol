@@ -12,8 +12,14 @@ namespace Swole_Patrol.ViewModels
     {
         ItemRepository repository = new ItemRepository();
 
-        private string text;
-        private string description;
+        private string username;
+        private string password;
+        private string name;
+        private DateTime birthday;
+        private string gender;
+        private int height;
+        private double weight;
+        private string email;
 
         public NewItemViewModel()
         {
@@ -25,20 +31,62 @@ namespace Swole_Patrol.ViewModels
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(text)
-                && !String.IsNullOrWhiteSpace(description);
+            return !String.IsNullOrWhiteSpace(username)
+                && !String.IsNullOrWhiteSpace(password)
+                && !String.IsNullOrWhiteSpace(name)
+                && !String.IsNullOrWhiteSpace(birthday.ToString())
+                && !String.IsNullOrWhiteSpace(gender)
+                && !String.IsNullOrWhiteSpace(height.ToString())
+                && !String.IsNullOrWhiteSpace(weight.ToString())
+                && !String.IsNullOrWhiteSpace(email);
         }
 
-        public string Text
+        public string Username
         {
-            get => text;
-            set => SetProperty(ref text, value);
+            get => username;
+            set => SetProperty(ref username, value);
         }
 
-        public string Description
+        public string Password
         {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => password;
+            set => SetProperty(ref password, value);
+        }
+
+        public string Name
+        {
+            get => name;
+            set => SetProperty(ref name, value);
+        }
+
+        public DateTime Birthday
+        {
+            get => birthday;
+            set => SetProperty(ref birthday, value);
+        }
+
+        public string Gender
+        {
+            get => gender;
+            set => SetProperty(ref gender, value);
+        }
+
+        public int Height 
+        {
+            get => height;
+            set => SetProperty(ref height, value);
+        }
+
+        public double Weight
+        {
+            get => weight;
+            set => SetProperty(ref weight, value);
+        }
+
+        public string Email
+        {
+            get => email;
+            set => SetProperty(ref email, value);
         }
 
         public Command SaveCommand { get; }
@@ -55,8 +103,14 @@ namespace Swole_Patrol.ViewModels
             Item newItem = new Item()
             {
                 Id = Guid.NewGuid().ToString(),
-                Text = Text,
-                Description = Description
+                Username = Username,
+                Password = Password,
+                Name = Name,
+                Birthday = Birthday,
+                Gender = Gender,
+                Height = Height,
+                Weight = Weight,
+                Email = Email
             };
 
             //await DataStore.AddItemAsync(newItem);
