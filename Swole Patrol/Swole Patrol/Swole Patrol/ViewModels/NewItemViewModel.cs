@@ -34,7 +34,7 @@ namespace Swole_Patrol.ViewModels
             return !String.IsNullOrWhiteSpace(username)
                 && !String.IsNullOrWhiteSpace(password)
                 && !String.IsNullOrWhiteSpace(name)
-                && !String.IsNullOrWhiteSpace(birthday.ToString())
+                && !String.IsNullOrWhiteSpace(birthday)
                 && !String.IsNullOrWhiteSpace(gender)
                 && !String.IsNullOrWhiteSpace(height.ToString())
                 && !String.IsNullOrWhiteSpace(weight.ToString())
