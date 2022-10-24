@@ -5,10 +5,22 @@
              Title="{Binding Title}">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Text}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Description}" FontSize="Small"/>
+        <Label Text="Username:" FontSize="Medium" />
+        <Label Text="{Binding Username}" FontSize="Small"/>
+        <Label Text="Password:" FontSize="Medium" />
+        <Label Text="{Binding Password}" FontSize="Small"/>
+        <Label Text="Name:" FontSize="Medium" />
+        <Label Text="{Binding Name}" FontSize="Small"/>
+        <Label Text="Birthday:" FontSize="Medium" />
+        <Label Text="{Binding Birthday}" FontSize="Small"/>
+        <Label Text="Gender:" FontSize="Medium" />
+        <Label Text="{Binding Gender}" FontSize="Small"/>
+        <Label Text="Height:" FontSize="Medium" />
+        <Label Text="{Binding Height}" FontSize="Small"/>
+        <Label Text="Weight:" FontSize="Medium" />
+        <Label Text="{Binding Weight}" FontSize="Small"/>
+        <Label Text="Email:" FontSize="Medium" />
+        <Label Text="{Binding Email}" FontSize="Small"/>
     </StackLayout>
     
 </ContentPage>

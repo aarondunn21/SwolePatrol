@@ -15,7 +15,7 @@ namespace Swole_Patrol.ViewModels
         private string username;
         private string password;
         private string name;
-        private DateTime birthday;
+        private string birthday;
         private string gender;
         private int height;
         private double weight;
@@ -59,7 +59,7 @@ namespace Swole_Patrol.ViewModels
             set => SetProperty(ref name, value);
         }
 
-        public DateTime Birthday
+        public string Birthday
         {
             get => birthday;
             set => SetProperty(ref birthday, value);
@@ -106,11 +106,11 @@ namespace Swole_Patrol.ViewModels
                 Username = Username,
                 Password = Password,
                 Name = Name,
-                Birthday = Birthday,
-                Gender = Gender,
+                Birthday = DateTime.Parse(Birthday).Date,
+                Gender = Gender.ToLower(),
                 Height = Height,
                 Weight = Weight,
-                Email = Email
+                Email = Email.ToLower()
             };
 
             //await DataStore.AddItemAsync(newItem);
