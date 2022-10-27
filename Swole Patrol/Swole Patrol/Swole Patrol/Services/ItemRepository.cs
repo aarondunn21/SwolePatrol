@@ -66,5 +66,14 @@ namespace Swole_Patrol.Services
                 return;
             }
         }
+        public async Task UpdateItem(Item chosenItem)
+        {
+            {
+                var toUpdateItem = (await firebaseClient.Child("Item").OnceAsync<Item>())
+                    .Where(item => item.Object.Id == chosenItem.Id).FirstOrDefault();
+                await firebaseClient.Child("Item").Child(toUpdateItem.Key).PutAsync(chosenItem);
+                return;
+            }
+        }
     }
 }

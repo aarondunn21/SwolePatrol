@@ -12,6 +12,7 @@ namespace Swole_Patrol
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(HealthPage), typeof(HealthPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(UpdateItemPage), typeof(UpdateItemPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

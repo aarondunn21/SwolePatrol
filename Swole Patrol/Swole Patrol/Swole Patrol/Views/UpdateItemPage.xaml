@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Swole_Patrol.Views.UpdateItemPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="Update Item"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15">
+            <Label Text="Username" FontSize="Medium" />
+            <Entry Text="{Binding Username, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Password" FontSize="Medium" />
+            <Editor Text="{Binding Password, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Name" FontSize="Medium" />
+            <Editor Text="{Binding Name, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Birthday" FontSize="Medium" />
+            <Editor Text="{Binding Birthday, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Gender" FontSize="Medium" />
+            <Editor Text="{Binding Gender, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Height" FontSize="Medium" />
+            <Editor Text="{Binding Height, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Weight" FontSize="Medium" />
+            <Editor Text="{Binding Weight, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Email" FontSize="Medium" />
+            <Editor Text="{Binding Email, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Update" Command="{Binding UpdateCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

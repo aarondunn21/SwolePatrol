@@ -20,6 +20,7 @@ namespace Swole_Patrol.ViewModels
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
         public Command DeleteItemCommand { get; }
+        public Command UpdateItemCommand { get; }
 
         public ItemsViewModel()
         {
@@ -32,6 +33,8 @@ namespace Swole_Patrol.ViewModels
             AddItemCommand = new Command(OnAddItem);
 
             DeleteItemCommand = new Command<Item>(OnItemDeleted);
+
+            UpdateItemCommand = new Command<Item>(OnUpdateItem);
         }
         public ObservableCollection<Calories_Item> Calories_Array
         {
@@ -95,8 +98,6 @@ namespace Swole_Patrol.ViewModels
             if (item == null)
                 return;
 
-            //OnItemDeleted(item);
-
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
@@ -105,6 +106,14 @@ namespace Swole_Patrol.ViewModels
         {
             await repository.DeleteItem(item.Id);
             await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+        }
+        async void OnUpdateItem(Item item)
+        {
+            if (item == null)
+                return;
+
+            await Shell.Current.GoToAsync($"{nameof(UpdateItemPage)}?{nameof(UpdateItemViewModel.ItemId)}={item.Id}");
+            return;
         }
     }
 }

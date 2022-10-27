@@ -57,12 +57,10 @@
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=DeleteItemCommand}"
                                 CommandParameter="{Binding .}"
                                 ></Button>
-                        <!--
-                        <Button Text="EDIT" 
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=DeleteItemCommand}"
+                        <Button Text="UPDATE" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=UpdateItemCommand}"
                                 CommandParameter="{Binding .}"
                                 ></Button>
-                        -->
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
