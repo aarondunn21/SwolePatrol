@@ -142,4 +142,7 @@
       <Name>Swole Patrol</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icons8_combo_chart_24.png" />
+  </ItemGroup>
 </Project>

@@ -1,7 +1,5 @@
-﻿using Swole_Patrol.ViewModels;
-using Swole_Patrol.Views;
+﻿using Swole_Patrol.Views;
 using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Swole_Patrol
@@ -12,6 +10,7 @@ namespace Swole_Patrol
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
+            Routing.RegisterRoute(nameof(HealthPage), typeof(HealthPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
         }
 

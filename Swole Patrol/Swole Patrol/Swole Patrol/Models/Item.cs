@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 
 namespace Swole_Patrol.Models
 {
@@ -13,5 +14,6 @@ namespace Swole_Patrol.Models
         public int Height { get; set; }
         public double Weight { get; set; }
         public string Email { get; set; }
+        public ObservableCollection<Calories_Item> Calories_Array { get; set; }
     }
 }

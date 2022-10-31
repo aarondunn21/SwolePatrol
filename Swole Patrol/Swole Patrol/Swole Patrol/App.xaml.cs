@@ -1,8 +1,4 @@
-﻿using Swole_Patrol.Services;
-using Swole_Patrol.Views;
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace Swole_Patrol
 {

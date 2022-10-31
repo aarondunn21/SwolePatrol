@@ -1,14 +1,5 @@
-﻿using Swole_Patrol.Models;
-using Swole_Patrol.ViewModels;
-using Swole_Patrol.Views;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Swole_Patrol.ViewModels;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Swole_Patrol.Views
 {

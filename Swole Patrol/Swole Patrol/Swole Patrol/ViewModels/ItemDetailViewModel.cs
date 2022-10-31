@@ -1,8 +1,8 @@
 ﻿using Swole_Patrol.Models;
 using Swole_Patrol.Services;
 using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Swole_Patrol.ViewModels
@@ -21,6 +21,7 @@ namespace Swole_Patrol.ViewModels
         private int height;
         private double weight;
         private string email;
+        private ObservableCollection<Calories_Item> calories_array;
         public string Id { get; set; }
 
         public string Username
@@ -46,8 +47,8 @@ namespace Swole_Patrol.ViewModels
             get => birthday;
             set => SetProperty(ref birthday, value);
         }
-        
-        public string Gender 
+
+        public string Gender
         {
             get => gender;
             set => SetProperty(ref gender, value);
@@ -69,6 +70,12 @@ namespace Swole_Patrol.ViewModels
         {
             get => email;
             set => SetProperty(ref email, value);
+        }
+
+        public ObservableCollection<Calories_Item> Calories_Array
+        {
+            get => calories_array;
+            set => SetProperty(ref calories_array, value);
         }
 
         public string ItemId
@@ -99,6 +106,7 @@ namespace Swole_Patrol.ViewModels
                 Height = item.Height;
                 Weight = item.Weight;
                 Email = item.Email;
+                Calories_Array = item.Calories_Array;
             }
             catch (Exception)
             {

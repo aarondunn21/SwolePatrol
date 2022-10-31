@@ -84,6 +84,9 @@
     <FlyoutItem Title="Browse" Icon="icon_feed.png">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Health" Icon="icons8_combo_chart_24.png">
+        <ShellContent Route="HealthPage" ContentTemplate="{DataTemplate local:HealthPage}" />
+    </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">

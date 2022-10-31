@@ -5,12 +5,13 @@ using Xamarin.Forms.Xaml;
 namespace Swole_Patrol.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class HealthPage : ContentPage
     {
-        public LoginPage()
+        public HealthPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            BindingContext = new ItemDetailViewModel();
+
         }
     }
 }

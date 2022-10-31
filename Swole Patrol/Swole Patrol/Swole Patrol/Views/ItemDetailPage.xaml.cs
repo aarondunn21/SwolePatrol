@@ -1,5 +1,4 @@
 ﻿using Swole_Patrol.ViewModels;
-using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace Swole_Patrol.Views

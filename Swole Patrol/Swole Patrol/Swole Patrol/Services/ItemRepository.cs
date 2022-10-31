@@ -2,10 +2,8 @@
 using Firebase.Database.Query;
 using Newtonsoft.Json;
 using Swole_Patrol.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Swole_Patrol.Services
@@ -36,7 +34,8 @@ namespace Swole_Patrol.Services
                 Gender = item.Object.Gender,
                 Height = item.Object.Height,
                 Weight = item.Object.Weight,
-                Email = item.Object.Email
+                Email = item.Object.Email,
+                Calories_Array = item.Object.Calories_Array
             }).ToList();
         }
 

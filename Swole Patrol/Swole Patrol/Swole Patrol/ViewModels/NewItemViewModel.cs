@@ -1,9 +1,7 @@
 ﻿using Swole_Patrol.Models;
 using Swole_Patrol.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 
 namespace Swole_Patrol.ViewModels
@@ -20,6 +18,7 @@ namespace Swole_Patrol.ViewModels
         private int height;
         private double weight;
         private string email;
+        private ObservableCollection<Calories_Item> calories_array;
 
         public NewItemViewModel()
         {
@@ -27,6 +26,17 @@ namespace Swole_Patrol.ViewModels
             CancelCommand = new Command(OnCancel);
             this.PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
+
+            //calories_array = new ObservableCollection<Calories_Item>
+            //{
+            //    new Calories_Item("Sun", 21),
+            //    new Calories_Item("Mon", 24),
+            //    new Calories_Item("Tue", 36),
+            //    new Calories_Item("Wed", 38),
+            //    new Calories_Item("Thu", 54),
+            //    new Calories_Item("Fri", 57),
+            //    new Calories_Item("Sat", 70)
+            //};
         }
 
         private bool ValidateSave()
@@ -71,7 +81,7 @@ namespace Swole_Patrol.ViewModels
             set => SetProperty(ref gender, value);
         }
 
-        public int Height 
+        public int Height
         {
             get => height;
             set => SetProperty(ref height, value);
@@ -87,6 +97,12 @@ namespace Swole_Patrol.ViewModels
         {
             get => email;
             set => SetProperty(ref email, value);
+        }
+
+        public ObservableCollection<Calories_Item> Calories_Array
+        {
+            get => calories_array;
+            set => SetProperty(ref calories_array, value);
         }
 
         public Command SaveCommand { get; }
@@ -110,7 +126,8 @@ namespace Swole_Patrol.ViewModels
                 Gender = Gender.ToLower(),
                 Height = Height,
                 Weight = Weight,
-                Email = Email.ToLower()
+                Email = Email.ToLower(),
+                Calories_Array = Calories_Array
             };
 
             //await DataStore.AddItemAsync(newItem);
