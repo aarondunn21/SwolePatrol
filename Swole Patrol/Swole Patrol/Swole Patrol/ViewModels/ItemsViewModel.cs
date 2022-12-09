@@ -14,8 +14,8 @@ namespace Swole_Patrol.ViewModels
         ItemRepository repository = new ItemRepository();
 
         private Item _selectedItem;
-
-        public ObservableCollection<Item> Items { get; }
+        private ObservableCollection<Calories_Item> calories_array;
+        public Item Items { get; set; }
         public Command LoadItemsCommand { get; }
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
@@ -24,7 +24,7 @@ namespace Swole_Patrol.ViewModels
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new Item();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             ItemTapped = new Command<Item>(OnItemSelected);
@@ -33,20 +33,31 @@ namespace Swole_Patrol.ViewModels
 
             DeleteItemCommand = new Command<Item>(OnItemDeleted);
         }
-
+        public ObservableCollection<Calories_Item> Calories_Array
+        {
+            get => calories_array;
+            set => SetProperty(ref calories_array, value);
+        }
         async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
-                Items.Clear();
-                //var items = await DataStore.GetItemsAsync(true);
-                var items = await repository.GetAll();
-                foreach (var item in items)
-                {
-                    Items.Add(item);
-                }
+                Debug.WriteLine("Loading Item");
+                Items = await repository.GetItem("sgsg");   ///add itemId arg      
+                Calories_Array = Items.Calories_Array;
+                    
+                //    new ObservableCollection<Calories_Item>
+                //{
+                //    new Calories_Item("Sun", 21),
+                //    new Calories_Item("Mon", 24),
+                //    new Calories_Item("Tue", 36),
+                //    new Calories_Item("Wed", 38),
+                //    new Calories_Item("Thu", 54),
+                //    new Calories_Item("Fri", 57),
+                //    new Calories_Item("Sat", 70)
+                //};
             }
             catch (Exception ex)
             {
@@ -72,7 +83,7 @@ namespace Swole_Patrol.ViewModels
                 SetProperty(ref _selectedItem, value);
                 OnItemSelected(value);
             }
-        }
+        }       
 
         private async void OnAddItem(object obj)
         {

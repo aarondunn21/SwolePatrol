@@ -7,11 +7,20 @@ namespace Swole_Patrol.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HealthPage : ContentPage
     {
+        ItemsViewModel _viewModel;
+
         public HealthPage()
         {
             InitializeComponent();
-            BindingContext = new ItemDetailViewModel();
 
+            BindingContext = _viewModel = new ItemsViewModel();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
+        }
+
     }
 }
