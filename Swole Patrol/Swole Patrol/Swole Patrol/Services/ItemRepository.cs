@@ -42,7 +42,7 @@ namespace Swole_Patrol.Services
                     usr.Password = item.Object.Password;
                     usr.Name = item.Object.Name;
                     usr.Birthday = item.Object.Birthday;
-                    usr.Gender = item.Object.Gender;
+                    usr.Gender = item.Object.Gender; //
                     usr.Height = item.Object.Height;
                     usr.Weight = item.Object.Weight;
                     usr.Email = item.Object.Email;
