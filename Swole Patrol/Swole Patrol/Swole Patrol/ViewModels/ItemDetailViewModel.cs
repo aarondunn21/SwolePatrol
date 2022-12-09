@@ -22,6 +22,7 @@ namespace Swole_Patrol.ViewModels
         private double weight;
         private string email;
         private ObservableCollection<Calories_Item> calories_array;
+        private ObservableCollection<Weight_Item> weight_array;
         public string Id { get; set; }
 
         public string Username
@@ -78,6 +79,12 @@ namespace Swole_Patrol.ViewModels
             set => SetProperty(ref calories_array, value);
         }
 
+        public ObservableCollection<Weight_Item> Weight_Array
+        {
+            get => weight_array;
+            set => SetProperty(ref weight_array, value);
+        }
+
         public string ItemId
         {
             get
@@ -107,6 +114,7 @@ namespace Swole_Patrol.ViewModels
                 Weight = item.Weight;
                 Email = item.Email;
                 Calories_Array = item.Calories_Array;
+                Weight_Array = item.Weight_Array;
             }
             catch (Exception)
             {

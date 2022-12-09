@@ -1,5 +1,6 @@
 ﻿using Swole_Patrol.Models;
 using Swole_Patrol.Services;
+using System.Collections.ObjectModel;
 using System;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace Swole_Patrol.ViewModels
         private int height;
         private double weight;
         private string email;
+        private ObservableCollection<Calories_Item> caloriesArray;
+        private ObservableCollection<Weight_Item> weightArray;
 
         public string Id { get; set; }
 
@@ -93,6 +96,18 @@ namespace Swole_Patrol.ViewModels
             get => email;
             set => SetProperty(ref email, value);
         }
+        public ObservableCollection<Calories_Item> Calories_Array
+        {
+            get => caloriesArray;
+            set => SetProperty(ref caloriesArray, value);
+        }
+
+        public ObservableCollection<Weight_Item> Weight_Array
+        {
+            get => weightArray;
+            set => SetProperty(ref weightArray, value);
+
+        }
 
         public Command UpdateCommand { get; }
         public Command CancelCommand { get; }
@@ -124,6 +139,8 @@ namespace Swole_Patrol.ViewModels
                 Height = item.Height;
                 Weight = item.Weight;
                 Email = item.Email;
+                Calories_Array = item.Calories_Array;
+                Weight_Array = item.Weight_Array;
             }
             catch (Exception)
             {
@@ -149,7 +166,9 @@ namespace Swole_Patrol.ViewModels
                 Gender = Gender.ToLower(),
                 Height = Height,
                 Weight = Weight,
-                Email = Email.ToLower()
+                Email = Email.ToLower(),
+                Calories_Array = Calories_Array,
+                Weight_Array = Weight_Array
             };
 
             //await DataStore.AddItemAsync(newItem);
