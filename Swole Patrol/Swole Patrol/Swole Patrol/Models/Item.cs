@@ -15,5 +15,12 @@ namespace Swole_Patrol.Models
         public double Weight { get; set; }
         public string Email { get; set; }
         public ObservableCollection<Calories_Item> Calories_Array { get; set; }
+        public ObservableCollection<Weight_Item> Weight_Array { get; set; }
+        public ObservableCollection<Workout_Item> Workout_Array { get; set; }
+
+
+       
+
+        
     }
 }

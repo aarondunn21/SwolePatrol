@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Swole_Patrol.Views.LogCalPage"
+             Title="Log Calories"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding CurCal, Mode=OneWay, StringFormat='{}{0:} Calories Consumed Today'}"
+                   FontSize="Large" TextColor="Black" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            <Label Text="Date" FontSize="Medium" />
+            <Entry Text="{Binding Date, Mode=OneWay}" FontSize="Medium" />
+            <Label Text="Calories" FontSize="Medium" />
+            <Entry Text="{Binding Calories, Mode=TwoWay}" FontSize="Medium" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Back" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Log" Command="{Binding LogCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+            <Label Text=""></Label>
+            <Label Text="Calorie Log" FontAttributes="Bold" FontSize="Medium" TextDecorations="Underline"></Label>
+            <Grid HeightRequest="50">
+                <Label Text="Day" Grid.Column="0" FontSize="Medium" FontAttributes="Bold"/>
+                <Label Text="Calories" Grid.Column="1" FontSize="Medium" FontAttributes="Bold" />
+            </Grid>
+            <ListView x:Name="calListView" ItemsSource="{Binding Calories_Rev}" SeparatorVisibility="Default"
+                      SeparatorColor="Blue" RowHeight="50">
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Label Text="{Binding Dt}" FontSize="Medium"/>
+                                <Label Grid.Column="1" Text="{Binding Value}" FontSize="Medium"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+                
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

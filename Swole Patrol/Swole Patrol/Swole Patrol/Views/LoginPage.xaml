@@ -1,14 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
              x:Class="Swole_Patrol.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             Shell.PresentationMode="ModalAnimated"
+             Title="Login Page"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             >
+             
+             
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-        </StackLayout>
+       
+        <Grid BackgroundColor="DarkGray" Margin="50,150,50,170">
+            <StackLayout Margin="30,75,30,0">
+                <Label Text="Username" ></Label>
+                <Entry Text="{Binding Username, Mode=TwoWay}"></Entry>
+                <Label Text="Password"></Label>
+                <Entry Text="{Binding Password, Mode=TwoWay}"></Entry>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>  
+                    <Button Grid.Column="3" Text="Login" Command="{Binding LoginCommand}"></Button>
+                    <Button Grid.Column="1" Text="Back" Clicked="Login_Clicked" Command="{Binding LoginCancel}"></Button>
+                </Grid>
+           
+            </StackLayout>
+
+        </Grid>
     </ContentPage.Content>
+    
 </ContentPage>

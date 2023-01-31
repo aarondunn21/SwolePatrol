@@ -2,24 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Swole_Patrol.Views.ItemDetailPage"
-             Title="{Binding Title}">
+             Title="{Binding Name}">
 
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="Username:" FontSize="Medium" />
+        <Label Text="Username:" TextColor="#2485B0" FontSize="Medium" />
         <Label Text="{Binding Username}" FontSize="Small"/>
-        <Label Text="Password:" FontSize="Medium" />
+        <Label Text="Password:" TextColor="#2485B0" FontSize="Medium" />
         <Label Text="{Binding Password}" FontSize="Small"/>
-        <Label Text="Name:" FontSize="Medium" />
+        <Label Text="Name:" TextColor="#2485B0" FontSize="Medium" />
         <Label Text="{Binding Name}" FontSize="Small"/>
-        <Label Text="Birthday:" FontSize="Medium" />
+        <Label Text="Birthday:" TextColor="#2485B0" FontSize="Medium" />
         <Label Text="{Binding Birthday}" FontSize="Small"/>
-        <Label Text="Gender:" FontSize="Medium" />
+        <Label Text="Gender:" TextColor="#2485B0" FontSize="Medium" />
         <Label Text="{Binding Gender}" FontSize="Small"/>
-        <Label Text="Height:" FontSize="Medium" />
-        <Label Text="{Binding Height}" FontSize="Small"/>
-        <Label Text="Weight:" FontSize="Medium" />
-        <Label Text="{Binding Weight}" FontSize="Small"/>
-        <Label Text="Email:" FontSize="Medium" />
+        <Label Text="Height:" TextColor="#2485B0" FontSize="Medium" />
+        <Label Text="{Binding Height, Mode=OneWay, StringFormat='{}{0:} inches'}" 
+               FontSize="Small"/>
+        <Label Text="Weight:" TextColor="#2485B0" FontSize="Medium" />
+        <Label Text="{Binding Weight, Mode=OneWay, StringFormat='{}{0:} lbs'}" FontSize="Small"/>
+        <Label Text="Email:" TextColor="#2485B0" FontSize="Medium" />
         <Label Text="{Binding Email}" FontSize="Small"/>
     </StackLayout>
     

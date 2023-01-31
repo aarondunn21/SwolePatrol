@@ -23,6 +23,7 @@ namespace Swole_Patrol.ViewModels
         private string email;
         private ObservableCollection<Calories_Item> calories_array;
         private ObservableCollection<Weight_Item> weight_array;
+        private ObservableCollection<Workout_Item> workout_array;
         public string Id { get; set; }
 
         public string Username
@@ -85,6 +86,12 @@ namespace Swole_Patrol.ViewModels
             set => SetProperty(ref weight_array, value);
         }
 
+        public ObservableCollection<Workout_Item> Workout_Array
+        {
+            get => workout_array;
+            set => SetProperty(ref workout_array, value);
+        }
+
         public string ItemId
         {
             get
@@ -115,6 +122,7 @@ namespace Swole_Patrol.ViewModels
                 Email = item.Email;
                 Calories_Array = item.Calories_Array;
                 Weight_Array = item.Weight_Array;
+                Workout_Array = item.Workout_Array;
             }
             catch (Exception)
             {

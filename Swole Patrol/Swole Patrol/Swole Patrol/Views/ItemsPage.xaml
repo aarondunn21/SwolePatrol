@@ -2,75 +2,72 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Swole_Patrol.Views.ItemsPage"
-             Title="{Binding Title}"
-             xmlns:local="clr-namespace:Swole_Patrol.ViewModels"  
-             xmlns:model="clr-namespace:Swole_Patrol.Models"  
+             Title="Home"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:local="clr-namespace:Swole_Patrol.ViewModels"
+             xmlns:model="clr-namespace:Swole_Patrol.ViewModels"
              x:Name="BrowseItemsPage">
 
-    <ContentPage.ToolbarItems>
+
+
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
-    <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <CollectionView x:Name="ItemsListView"
+
+    <ContentPage.BindingContext>
+        <local:ItemsViewModel></local:ItemsViewModel>
+    </ContentPage.BindingContext>
+    
+    <CollectionView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Item">
-                        <Label Text="{Binding Username}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <Label Text="{Binding Password}" 
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+
+
+                <StackLayout Padding="10" >
+                    <Label Text="{Binding Name, StringFormat='{}Hello, {0}'}"
                             LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                        <Label Text="{Binding Name}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <Label Text="{Binding Birthday}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <Label Text="{Binding Gender}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <Label Text="{Binding Height}"
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <Label Text="{Binding Weight}"
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <Label Text="{Binding Email}" 
-                            LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                        <Button Text="DELETE"  
+                            Style="{DynamicResource ListItemTextStyle}"
+                            FontSize="46" />
+                    <Label Text="{Binding Weight, StringFormat='{}Current Weight: {0} lbs'}"
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemTextStyle}"
+                            FontSize="20" />
+
+                    <Button Text="LOG CALORIES" FontSize="18"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=LogCaloriesCommand}"
+                                CommandParameter="{Binding .}" HeightRequest="75"
+                                ></Button>
+                    <Button Text="LOG WEIGHT" FontSize="18"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=LogWeightCommand}"
+                                CommandParameter="{Binding .}" HeightRequest="75"
+                                ></Button>
+                    <Button Text="LOG WORKOUT" FontSize="18"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=LogWorkoutCommand}"
+                                CommandParameter="{Binding .}" HeightRequest="75"
+                                ></Button>
+                    <Button Text="DELETE ACCOUNT" FontSize="18"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=DeleteItemCommand}"
-                                CommandParameter="{Binding .}"
+                                CommandParameter="{Binding .}" HeightRequest="75"
                                 ></Button>
-                        <Button Text="UPDATE" 
+                    <Button Text="UPDATE USER INFO" FontSize="18"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=UpdateItemCommand}"
-                                CommandParameter="{Binding .}"
+                                CommandParameter="{Binding .}" HeightRequest="75"
                                 ></Button>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"
                                 CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

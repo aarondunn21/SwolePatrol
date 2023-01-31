@@ -26,6 +26,7 @@ namespace Swole_Patrol.ViewModels
         private string email;
         private ObservableCollection<Calories_Item> caloriesArray;
         private ObservableCollection<Weight_Item> weightArray;
+        private ObservableCollection<Workout_Item> workoutArray;
 
         public string Id { get; set; }
 
@@ -109,6 +110,12 @@ namespace Swole_Patrol.ViewModels
 
         }
 
+        public ObservableCollection<Workout_Item> Workout_Array
+        {
+            get => workoutArray;
+            set => SetProperty(ref workoutArray, value);
+        }
+
         public Command UpdateCommand { get; }
         public Command CancelCommand { get; }
 
@@ -141,6 +148,7 @@ namespace Swole_Patrol.ViewModels
                 Email = item.Email;
                 Calories_Array = item.Calories_Array;
                 Weight_Array = item.Weight_Array;
+                Workout_Array = item.Workout_Array;
             }
             catch (Exception)
             {
@@ -168,7 +176,8 @@ namespace Swole_Patrol.ViewModels
                 Weight = Weight,
                 Email = Email.ToLower(),
                 Calories_Array = Calories_Array,
-                Weight_Array = Weight_Array
+                Weight_Array = Weight_Array,
+                Workout_Array = Workout_Array
             };
 
             //await DataStore.AddItemAsync(newItem);

@@ -49,6 +49,17 @@ namespace Swole_Patrol.ViewModels
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        protected bool Set<T>(ref T field, T value, [CallerMemberName] string name = null)
+        {
+            if (!EqualityComparer<T>.Default.Equals(field, value))
+            {
+                field = value;
+                OnPropertyChanged(name);
+                return true;
+            }
+            return false;
+        }
         #endregion
     }
 }

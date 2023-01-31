@@ -3,7 +3,6 @@ using Firebase.Database.Query;
 using Newtonsoft.Json;
 using Swole_Patrol.Models;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,7 +10,7 @@ namespace Swole_Patrol.Services
 {
     internal class ItemRepository
     {
-        FirebaseClient firebaseClient = new FirebaseClient("https://swole-patrol-b7088-default-rtdb.firebaseio.com/");
+        FirebaseClient firebaseClient = new FirebaseClient("https://swole-patrol-2-default-rtdb.firebaseio.com/");
 
         public async Task<bool> Save(Item item)
         {
@@ -23,38 +22,35 @@ namespace Swole_Patrol.Services
             return false;
         }
 
-        //public async Task<Item> GetAll()
-        //{
-            
-        //}
+        public async Task<List<Item>> GetAll()
+        {
+            return (await firebaseClient.Child(nameof(Item)).OnceAsync<Item>()).Select(item => new Item
+            {
+                Id = item.Object.Id,
+                Username = item.Object.Username,
+                Password = item.Object.Password,
+                Name = item.Object.Name,
+                Birthday = item.Object.Birthday,
+                Gender = item.Object.Gender,
+                Height = item.Object.Height,
+                Weight = item.Object.Weight,
+                Email = item.Object.Email,
+                Calories_Array = item.Object.Calories_Array,
+                Weight_Array = item.Object.Weight_Array,
+                Workout_Array = item.Object.Workout_Array
+            }).ToList();
+        }
 
         public async Task<Item> GetItem(string itemId)
         {
-            var data = await firebaseClient.Child(nameof(Item)).OnceAsync<Item>();
+            var allItems = await GetAll();
+            return allItems.Where(a => a.Id == itemId).FirstOrDefault();
+        }
 
-            Item usr = new Item();
-            foreach (var item in data)
-            {
-                if (item.Object.Id == "f99c4afc-99eb-4cc8-b06f-1a71a17a5946") //add itemID arg
-                {
-                    usr.Id = item.Object.Id;
-                    usr.Username = item.Object.Username;
-                    usr.Password = item.Object.Password;
-                    usr.Name = item.Object.Name;
-                    usr.Birthday = item.Object.Birthday;
-                    usr.Gender = item.Object.Gender; //
-                    usr.Height = item.Object.Height;
-                    usr.Weight = item.Object.Weight;
-                    usr.Email = item.Object.Email;
-                    usr.Calories_Array = new ObservableCollection<Calories_Item>();
-                    foreach (var cal in item.Object.Calories_Array)
-                    {
-                        usr.Calories_Array.Add(new Calories_Item(cal.Dt, cal.Value));
-                    }
-                }
-            }
-
-            return usr;
+        public async Task<Item> GetItemWithUserName(string username) 
+        {
+            var allItems = await GetAll();
+            return allItems.Where(a => a.Username == username).FirstOrDefault();
         }
 
         public async Task DeleteItem(string itemId)
